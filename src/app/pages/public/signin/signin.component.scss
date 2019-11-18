@@ -1,0 +1,24 @@
+.signin-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .login-form-card {
+    padding: 50px;
+    width: 25%;
+    min-width: 200px;
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .login-form__item {
+        width: 100%;
+      }
+      .login-form__submit{
+        align-self: flex-end;
+      }
+    }
+  }
+}

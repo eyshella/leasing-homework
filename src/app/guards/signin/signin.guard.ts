@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import * as moment from 'moment';
 import { AuthInfo } from 'src/app/models/auth-info';
 import { AppState, selectAuthState } from 'src/app/store/app.reducer';
-import * as moment from 'moment'
+import * as AuthActions from '../../store/auth/auth.actions';
+
+
 @Injectable()
-export class PrivateZoneGuard implements CanActivate {
+export class SignInGuard implements CanActivate {
   public authInfo: AuthInfo = null;
 
   constructor(private store: Store<AppState>, private router: Router) {
@@ -13,14 +16,11 @@ export class PrivateZoneGuard implements CanActivate {
       this.authInfo = data;
     });
   }
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    console.log(state.url, this.authInfo)
-    if (this.authInfo == null ||
-      this.authInfo.expirationDate == null ||
-      !moment(this.authInfo.expirationDate).isValid ||
-      moment(this.authInfo.expirationDate).isBefore(moment())) {
 
-      this.router.navigateByUrl('/public/signin')
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.authInfo != null && moment(this.authInfo.expirationDate).isValid && moment(this.authInfo.expirationDate).isAfter(moment())) {
+
+      this.router.navigateByUrl('private/menu');
       return false;
     }
 

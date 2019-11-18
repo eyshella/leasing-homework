@@ -1,3 +1,15 @@
-<p>
-  signin works!
-</p>
+<div class="signin-wrapper">
+  <mat-card class="login-form-card">
+    <form class="login-form" (submit)='onSubmit($event)'>
+      <mat-form-field class="login-form__item">
+        <input matInput placeholder="Логин" [(ngModel)]="email" name='email'>
+      </mat-form-field>
+
+      <mat-form-field class="login-form__item">
+        <input matInput placeholder="Пароль" type="password" [(ngModel)]="password" name='password'>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" class="login-form__submit">Войти</button>
+    </form>
+  </mat-card>
+</div>
