@@ -38,6 +38,8 @@ export class SigninComponent implements OnInit {
       }));
 
       this.router.navigateByUrl('/private/menu')
+    } else {
+      alert('Неправильные имя пользователя или пароль.');
     }
   }
 

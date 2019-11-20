@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducer';
+import * as AuthActions from '../../../store/auth/auth.actions';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private store: Store<AppState>) { }
 
   ngOnInit() {
+
+  }
+
+  public onClickSignOut() {
+    this.store.dispatch(AuthActions.clearAuths());
+    this.router.navigateByUrl('/public/signin')
   }
 
 }
