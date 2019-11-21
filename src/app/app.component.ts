@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
         { id: 4, termInMonths: 6, clientId: 2, firstPaymentCost: 1000000, totalCost: 3000000, product: 'Пила торцовочная Metabo' },
         { id: 5, termInMonths: 12, clientId: 3, firstPaymentCost: 1000000, totalCost: 25510000, product: 'Сервер Asus RS100-E9-PI2' },
         { id: 6, termInMonths: 12, clientId: 3, firstPaymentCost: 200000, totalCost: 7462000, product: 'Сервер SuperMicro SYS-5018R-WR' },
-        { id: 7, termInMonths: 4, clientId: 4, firstPaymentCost: 1000000, totalCost: 328700000, product: 'Mitsubishi Pajero Sport ' },
+        { id: 7, termInMonths: 4, clientId: 4, firstPaymentCost: 1000000, totalCost: 328700000, product: 'Mitsubishi Pajero Sport' },
       ]
     }));
   }

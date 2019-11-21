@@ -5,9 +5,9 @@
         {{clients[bid.clientId].name}}
       </div>
       <div class="mat-body bid-card__text">
-        {{bid.totalCost/100|currency:"&#8381; "}}
+        {{bid.totalCost/100|number:'1.2-2'}} &#8381;
       </div>
-      <button mat-button color="primary" class="bid-card__text">Перейти</button>
+      <button mat-button color="primary" class="bid-card__text" (click)="cardOnClick(bid.id)">Перейти</button>
     </mat-card>
 
   </div>

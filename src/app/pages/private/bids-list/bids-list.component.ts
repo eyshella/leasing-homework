@@ -7,6 +7,7 @@ import { AppState, selectBidState, selectClientState } from 'src/app/store/app.r
 import * as fromBids from '../../../store/bid/bid.reducer';
 import * as fromClients from '../../../store/client/client.reducer';
 import { Dictionary } from '@ngrx/entity';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bids-list',
@@ -18,7 +19,7 @@ export class BidsListComponent implements OnInit {
   public bids: Bid[] = [];
   public clients: Dictionary<Client>;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private router:Router) { }
 
   ngOnInit() {
     this.store
@@ -39,6 +40,10 @@ export class BidsListComponent implements OnInit {
       .subscribe(data => {
         this.clients = data;
       });
+  }
+
+  public cardOnClick(id: number) {
+    this.router.navigateByUrl(`/private/bids/${id}`);
   }
 
 }
