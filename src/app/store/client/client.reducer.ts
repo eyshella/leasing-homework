@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on, createSelector } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Client } from '../../models/client';
 import * as ClientActions from './client.actions';
@@ -59,3 +59,8 @@ export const {
   selectAll,
   selectTotal,
 } = adapter.getSelectors();
+
+export const selectClient = createSelector(
+  selectEntities,
+  (entities, props) => entities[props.id]
+);

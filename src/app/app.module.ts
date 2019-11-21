@@ -17,7 +17,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MoneyTransformPipe } from './pipes/money/money-transform.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { MoneyTransformPipe } from './pipes/money/money-transform.pipe';
     BidsListComponent,
     BidCalculationComponent,
     BidItemComponent,
-    MoneyTransformPipe,
     MenuComponent
   ],
   imports: [

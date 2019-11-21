@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on, createSelector } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Bid } from '../../models/bid';
 import * as BidActions from './bid.actions';
@@ -59,3 +59,8 @@ export const {
   selectAll,
   selectTotal,
 } = adapter.getSelectors();
+
+export const selectBid = createSelector(
+  selectEntities,
+  (entities, props) => entities[props.id]
+);

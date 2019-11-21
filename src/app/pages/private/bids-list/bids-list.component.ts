@@ -29,7 +29,6 @@ export class BidsListComponent implements OnInit {
       )
       .subscribe(data => {
         this.bids = data;
-        console.log(data)
       });
 
     this.store
