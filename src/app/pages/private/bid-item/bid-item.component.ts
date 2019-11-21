@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Store, select } from '@ngrx/store';
+import { ActivatedRoute, Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { switchMap, tap } from 'rxjs/operators';
 import { Bid } from 'src/app/models/bid';
 import { Client } from 'src/app/models/client';
 import { AppState, selectBidState, selectClientState } from 'src/app/store/app.reducer';
+
 import * as fromBids from '../../../store/bid/bid.reducer';
 import * as fromClients from '../../../store/client/client.reducer';
-import { tap, map, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-bid-item',
@@ -44,4 +44,7 @@ export class BidItemComponent implements OnInit {
       .subscribe(data => this.client = data);
   }
 
+  public calculateOnClick(){
+    this.router.navigateByUrl(`private/bids/${this.id}/calculation`)
+  }
 }

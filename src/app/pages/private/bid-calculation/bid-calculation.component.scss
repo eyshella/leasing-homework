@@ -1,0 +1,35 @@
+.bid-calculation-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+
+  .bid-calculation {
+    min-width: 300px;
+  }
+
+  .bid-calculation-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .bid-calculation-content__row {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.key-value-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .key-value-row__key {
+    padding: 10px;
+  }
+
+  .key-value-row__value {
+    padding: 10px;
+  }
+}

@@ -1,3 +1,135 @@
-<p>
-  bids-calculation works!
-</p>
+<div class="bid-calculation-wrapper">
+
+  <mat-card class="bid-calculation">
+    <mat-card-header>
+      <mat-card-title>{{bid.product}}</mat-card-title>
+      <mat-card-subtitle>{{client.name}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="bid-calculation-content">
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Срок:
+        </div>
+        <div class="key-value-row__value">
+          {{bid.termInMonths}} месяцев
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Общая стоимость:
+        </div>
+        <div class="key-value-row__value">
+          {{bid.totalCost/100|number:'1.2-2'}} &#8381;
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Первый взнос:
+        </div>
+        <div class="key-value-row__value">
+            {{bid.firstPaymentCost/100|number:'1.2-2'}} &#8381;
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Кредитная стоимость:
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Срок полезного использования
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Норма амортизации
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Амортизация
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Ставка
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Плата за использование заемных стредств
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Комиссия
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          НДС
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Лизинговый платеж
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Ежемесячный платеж
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Ориентировочные затраты
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+      <div class="bid-calculation-content__row key-value-row">
+        <div class="key-value-row__key">
+          Рентабельность
+        </div>
+        <div class="key-value-row__value">
+          -
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button color="warn">Отклонить</button>
+      <button mat-button color="primary" (click)='calculateOnClick()'>Подготовить договор</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

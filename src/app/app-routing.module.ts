@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'private/menu', component: MenuComponent, canActivate: [PrivateZoneGuard] },
   { path: 'private/bids/:id', component: BidItemComponent, canActivate: [PrivateZoneGuard] },
   { path: 'private/bids', component: BidsListComponent, canActivate: [PrivateZoneGuard] },
-  { path: 'private/bids/:id/calculation ', component: BidCalculationComponent, canActivate: [PrivateZoneGuard] },
+  { path: 'private/bids/:id/calculation', component: BidCalculationComponent, canActivate: [PrivateZoneGuard] },
 
   { path: '**', redirectTo: '/public/signin', pathMatch: 'full' },
 ];
