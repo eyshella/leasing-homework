@@ -1,3 +1,14 @@
-<p>
-  bids-list works!
-</p>
+<div class="bids-list-wrapper">
+  <div class="bids-list">
+    <mat-card class="bids-list__item bid-card" *ngFor="let bid of bids">
+      <div class="mat-body bid-card__text">
+        {{clients[bid.clientId].name}}
+      </div>
+      <div class="mat-body bid-card__text">
+        {{bid.totalCost/100|currency:"&#8381; "}}
+      </div>
+      <button mat-button color="primary" class="bid-card__text">Перейти</button>
+    </mat-card>
+
+  </div>
+</div>

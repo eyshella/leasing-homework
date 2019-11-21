@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Bid } from 'src/app/models/bid';
+import { Client } from 'src/app/models/client';
+import { AppState, selectBidState, selectClientState } from 'src/app/store/app.reducer';
+
+import * as fromBids from '../../../store/bid/bid.reducer';
+import * as fromClients from '../../../store/client/client.reducer';
+import { Dictionary } from '@ngrx/entity';
 
 @Component({
   selector: 'app-bids-list',
@@ -7,9 +15,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BidsListComponent implements OnInit {
 
-  constructor() { }
+  public bids: Bid[] = [];
+  public clients: Dictionary<Client>;
+
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.store
+      .pipe(
+        select(selectBidState),
+        select(fromBids.selectAll)
+      )
+      .subscribe(data => {
+        this.bids = data;
+        console.log(data)
+      });
+
+    this.store
+      .pipe(
+        select(selectClientState),
+        select(fromClients.selectEntities)
+      )
+      .subscribe(data => {
+        this.clients = data;
+      });
   }
 
 }
