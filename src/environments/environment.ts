@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  userEmail:'user@user.user',
-  userPassword:'password'
+  userEmail: 'user@user.user',
+  userPassword: 'password',
+  commisionRate: 0.01
 };
 
 /*

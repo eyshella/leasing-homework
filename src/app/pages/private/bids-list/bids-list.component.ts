@@ -41,7 +41,7 @@ export class BidsListComponent implements OnInit {
       });
   }
 
-  public cardOnClick(id: number) {
+  public openBidOnClick(id: number) {
     this.router.navigateByUrl(`/private/bids/${id}`);
   }
 

@@ -6,12 +6,44 @@
       <mat-card-subtitle>{{client.name}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content class="bid-calculation-content">
+      <form [formGroup]="calculationForm">
+        <div class="bid-calculation-content__row key-value-row">
+          <div class="key-value-row__key">
+            Срок полезного использования:
+          </div>
+          <div class="key-value-row__value">
+            <mat-form-field>
+              <input matInput formControlName="termOfUseInMonths" placeholder="В месяцах" type="number">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="bid-calculation-content__row key-value-row">
+          <div class="key-value-row__key">
+            Ставка:
+          </div>
+          <div class="key-value-row__value">
+            <mat-form-field>
+              <input matInput formControlName="rate" placeholder="В процентах" type="number" max="100" min="0">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="bid-calculation-content__row key-value-row">
+          <div class="key-value-row__key">
+            Ориентировочные затраты:
+          </div>
+          <div class="key-value-row__value">
+            <mat-form-field>
+              <input matInput formControlName="estimatedCost" placeholder="В рублях" type="number">
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
       <div class="bid-calculation-content__row key-value-row">
         <div class="key-value-row__key">
           Срок:
         </div>
         <div class="key-value-row__value">
-          {{bid.termInMonths}} месяцев
+          {{calculation.termInMonths}} месяцев
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -19,7 +51,7 @@
           Общая стоимость:
         </div>
         <div class="key-value-row__value">
-          {{bid.totalCost/100|number:'1.2-2'}} &#8381;
+          {{calculation.totalCost/100|number:'1.2-2'}} &#8381;
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -27,7 +59,7 @@
           Первый взнос:
         </div>
         <div class="key-value-row__value">
-            {{bid.firstPaymentCost/100|number:'1.2-2'}} &#8381;
+          {{calculation.firstPaymentCost/100|number:'1.2-2'}} &#8381;
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -35,15 +67,7 @@
           Кредитная стоимость:
         </div>
         <div class="key-value-row__value">
-          -
-        </div>
-      </div>
-      <div class="bid-calculation-content__row key-value-row">
-        <div class="key-value-row__key">
-          Срок полезного использования
-        </div>
-        <div class="key-value-row__value">
-          -
+          {{calculation.creditCost/100|number:'1.2-2'}} &#8381;
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -51,7 +75,7 @@
           Норма амортизации
         </div>
         <div class="key-value-row__value">
-          -
+          {{calculation.depreciationRate*100}} %
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -59,15 +83,7 @@
           Амортизация
         </div>
         <div class="key-value-row__value">
-          -
-        </div>
-      </div>
-      <div class="bid-calculation-content__row key-value-row">
-        <div class="key-value-row__key">
-          Ставка
-        </div>
-        <div class="key-value-row__value">
-          -
+          {{calculation.depreciation/100|number:'1.2-2'}} &#8381;
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -75,7 +91,7 @@
           Плата за использование заемных стредств
         </div>
         <div class="key-value-row__value">
-          -
+          {{calculation.feeForFunds/100|number:'1.2-2'}} &#8381;
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -83,7 +99,7 @@
           Комиссия
         </div>
         <div class="key-value-row__value">
-          -
+          {{calculation.commission/100|number:'1.2-2'}} &#8381;
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -91,7 +107,7 @@
           НДС
         </div>
         <div class="key-value-row__value">
-          -
+          {{calculation.VAT/100|number:'1.2-2'}} &#8381;
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -99,7 +115,7 @@
           Лизинговый платеж
         </div>
         <div class="key-value-row__value">
-          -
+          {{calculation.totalLeasePayment/100|number:'1.2-2'}} &#8381;
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -107,15 +123,7 @@
           Ежемесячный платеж
         </div>
         <div class="key-value-row__value">
-          -
-        </div>
-      </div>
-      <div class="bid-calculation-content__row key-value-row">
-        <div class="key-value-row__key">
-          Ориентировочные затраты
-        </div>
-        <div class="key-value-row__value">
-          -
+          {{calculation.monthlyLeasePayment/100|number:'1.2-2'}} &#8381;
         </div>
       </div>
       <div class="bid-calculation-content__row key-value-row">
@@ -123,13 +131,13 @@
           Рентабельность
         </div>
         <div class="key-value-row__value">
-          -
+          {{calculation.profitability}}
         </div>
       </div>
     </mat-card-content>
     <mat-card-actions align="end">
-      <button mat-button color="warn">Отклонить</button>
-      <button mat-button color="primary" (click)='calculateOnClick()'>Подготовить договор</button>
+      <button mat-button color="warn" (click)='rejectOnClick()'>Отклонить</button>
+      <button mat-button color="primary">Подготовить договор</button>
     </mat-card-actions>
   </mat-card>
 </div>

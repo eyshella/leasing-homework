@@ -5,6 +5,7 @@ export interface BidCalculation {
   creditCost: number;
   termOfUseInMonths: number;
   depreciationRate: number;
+  depreciation: number;
   rate: number;
   feeForFunds: number;
   commission: number;
