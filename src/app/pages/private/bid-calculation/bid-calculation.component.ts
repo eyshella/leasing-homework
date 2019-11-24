@@ -112,8 +112,8 @@ export class BidCalculationComponent implements OnInit {
   private calculate() {
     const termInYears = (this.calculation.termInMonths / 12);
     this.calculation.creditCost = this.calculation.totalCost - this.calculation.firstPaymentCost;
-    this.calculation.depreciationRate = 1 / (this.calculation.termOfUseInMonths/12);
-    this.calculation.depreciation = this.calculation.totalCost * this.calculation.depreciationRate * termInYears;
+    this.calculation.depreciationRate = 1 / (this.calculation.termOfUseInMonths / 12);
+    this.calculation.depreciation = Math.min(this.calculation.totalCost * this.calculation.depreciationRate * termInYears, this.calculation.totalCost);
     this.calculation.feeForFunds = this.calculation.rate * this.calculation.creditCost * termInYears;
     this.calculation.commission = this.calculation.creditCost * environment.commisionRate * termInYears;
     this.calculation.VAT = (this.calculation.feeForFunds + this.calculation.commission) * 0.2;

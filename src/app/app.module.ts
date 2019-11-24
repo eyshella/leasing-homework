@@ -17,6 +17,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AgreementsListComponent } from './pages/private/agreements-list/agreements-list.component';
+import { AgreementsItemComponent } from './pages/private/agreement-item/agreements-item.component';
+import { GraphicsComponent } from './pages/private/graphics/graphics.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BidsListComponent,
     BidCalculationComponent,
     BidItemComponent,
-    MenuComponent
+    MenuComponent,
+    AgreementsListComponent,
+    AgreementsItemComponent,
+    GraphicsComponent
   ],
   imports: [
     BrowserModule,

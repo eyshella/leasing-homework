@@ -1,0 +1,14 @@
+<div class="agreements-list-wrapper">
+  <div class="agreements-list">
+    <mat-card class="agreements-list__item agreement-card" *ngFor="let agreement of agreements">
+      <div class="mat-body agreement-card__text">
+        <!-- {{clients[agreement.clientId].name}} -->
+      </div>
+      <div class="mat-body agreement-card__text">
+<!--         {{agreement.totalCost/100|number:'1.2-2'}} &#8381;
+ -->      </div>
+      <button mat-button color="primary" class="agreement-card__text" (click)="openAgreementOnClick(agreement.id)">Перейти</button>
+    </mat-card>
+
+  </div>
+</div>
