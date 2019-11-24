@@ -1,6 +1,6 @@
 export interface Agreement {
   id: number;
-  text: string;
+  content: string;
   clientId: number;
   bidId?: number;
 }

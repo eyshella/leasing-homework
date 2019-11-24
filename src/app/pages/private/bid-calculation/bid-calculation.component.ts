@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { switchMap, tap } from 'rxjs/operators';
 import { Bid } from 'src/app/models/bid';
 import { Client } from 'src/app/models/client';
-import { AppState, selectBidState, selectClientState } from 'src/app/store/app.reducer';
+import { AppState, selectBidState, selectClientState, selectAgreementState } from 'src/app/store/app.reducer';
 
 import * as fromBids from '../../../store/bid/bid.reducer';
 import * as fromClients from '../../../store/client/client.reducer';
@@ -12,6 +12,11 @@ import * as bidActions from '../../../store/bid/bid.actions';
 import { BidCalculation } from 'src/app/models/bid-calculation';
 import { FormGroup, FormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { AgreementBuilder } from 'src/app/helpers/agreement-builder/agreement.builder';
+import * as AgreementActions from '../../../store/agreement/agreement.actions';
+import * as fromAgreement from '../../../store/agreement/agreement.reducer';
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-bid-calculation',
@@ -24,6 +29,7 @@ export class BidCalculationComponent implements OnInit {
   public client: Client;
 
   public calculation: BidCalculation
+  public nextAgreementId: number = 0;
 
   public calculationForm: FormGroup = new FormGroup({
     termOfUseInMonths: new FormControl(0),
@@ -58,6 +64,15 @@ export class BidCalculationComponent implements OnInit {
         this.client = data;
         this.initCalculation();
         this.calculate();
+      });
+
+    this.store
+      .pipe(
+        select(selectAgreementState),
+        select(fromAgreement.selectIds)
+      )
+      .subscribe(data => {
+        this.nextAgreementId = data.length + 1;
       });
 
     this.calculationForm.valueChanges.subscribe(data => {
@@ -120,7 +135,32 @@ export class BidCalculationComponent implements OnInit {
     this.calculation.totalLeasePayment = (this.calculation.depreciation + this.calculation.feeForFunds + this.calculation.commission + this.calculation.VAT);
     this.calculation.monthlyLeasePayment = this.calculation.totalLeasePayment / this.calculation.termInMonths;
     this.calculation.profitability = this.calculation.commission / this.calculation.estimatedCost;
+  }
 
-    console.log(this.calculation);
+  private createAgreement() {
+    const agreementText = AgreementBuilder.buildAgreement(
+      this.client.name,
+      'Петрова Сергея Васильевича',
+      moment().format('L'),
+      moment().add(1, 'months').format('L'),
+      this.calculation.termInMonths.toString(),
+      (this.calculation.monthlyLeasePayment / 100).toFixed(2),
+      (this.calculation.VAT / this.calculation.termInMonths / 100).toFixed(2),
+      (this.calculation.totalLeasePayment / 100).toFixed(2),
+      (this.calculation.VAT / 100).toFixed(2),
+      ((this.calculation.totalCost - this.calculation.depreciation) / 100).toFixed(2),
+      ((this.calculation.totalCost - this.calculation.depreciation) * 0.2 / 100).toFixed(2)
+    );
+
+    this.store.dispatch(AgreementActions.addAgreement({
+      agreement: {
+        content: agreementText,
+        bidId: this.bid.id,
+        clientId: this.bid.clientId,
+        id: this.nextAgreementId
+      }
+    }));
+
+    this.router.navigateByUrl('private/agreements')
   }
 }

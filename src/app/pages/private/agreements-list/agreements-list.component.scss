@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+
+.agreements-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .agreements-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+
+    .agreements-list__title {}
+
+    .agreements-list__item {
+      margin: 10px;
+    }
+  }
+}
+
+.agreement-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  .agreement-card__text{
+    padding-right:10px;
+  }
+}
