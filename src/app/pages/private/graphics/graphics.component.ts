@@ -14,7 +14,7 @@ import { Bid } from 'src/app/models/bid';
 })
 export class GraphicsComponent implements OnInit {
   //TODO: Refactor this page a bit
-  
+
   public currentAmount: number = 0;
   public currentNumberBids: number = 0;
 
@@ -89,7 +89,6 @@ export class GraphicsComponent implements OnInit {
       )
       .subscribe(data => {
         data.forEach(item => {
-          console.log(item.totalCost / 100)
           this.currentAmount += (item.totalCost / 100);
         })
 
