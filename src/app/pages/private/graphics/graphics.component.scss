@@ -1,0 +1,9 @@
+.cantor_wrapper {
+  display: flex;
+  flex-direction: row;
+
+  .cantor_plot {
+      display: block;
+      flex-basis: 800px;
+  }
+}

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartPoint } from 'chart.js';
 import { Color, Label, BaseChartDirective } from 'ng2-charts';
+import { AppState, selectBidState } from 'src/app/store/app.reducer';
+import { Store, select } from '@ngrx/store';
+import * as fromBids from '../../../store/bid/bid.reducer';
+import { Bid } from 'src/app/models/bid';
+
 
 @Component({
   selector: 'app-graphics',
@@ -9,6 +14,7 @@ import { Color, Label, BaseChartDirective } from 'ng2-charts';
 })
 export class GraphicsComponent implements OnInit {
 
+  public currentAmount: number = 0;
   public lineChartData: ChartDataSets[] = [];
   public lineChartLabels: Label[] = [];
   public lineChartOptions: ChartOptions = {
@@ -16,18 +22,23 @@ export class GraphicsComponent implements OnInit {
       xAxes: [{
         type: 'linear',
         ticks: {
-          min: -0.1,
-          max: 1.1,
-          stepSize: 0.01,
+          min: 2015,
+          max: 2019,
+          stepSize: 1,
         }
       }],
       yAxes: [{
         ticks: {
           min: -0.1,
-          max: 1.1,
-          stepSize: 0.1,
+          max: 15000000,
+          stepSize: 3000000,
         }
       }]
+    },
+    title: {
+      text: 'Сумма общих стоимостей заявок (в рублях)',
+      display: true,
+      fontSize: 16
     }
   }
   public lineChartColors: Color[] = [
@@ -40,22 +51,48 @@ export class GraphicsComponent implements OnInit {
   public lineChartType = 'line';
   public lineChartPlugins = [];
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    /* for (let i = 0; i < values.length; i++) {
-      const value = values[i];
-      let point: ChartPoint = {
-        x: value,
-        y: (i) / values.length,
-      }
-      points.push(point);
-    }
+    this.store
+      .pipe(
+        select(selectBidState),
+        select(fromBids.selectAll)
+      )
+      .subscribe(data => {
+        data.forEach(item=>{
+          console.log(item.totalCost/100)
+          this.currentAmount+=(item.totalCost/100);
+        })
+      });
+
+
+    let points: ChartPoint[] = [{
+      x: 2015,
+      y: 1983043
+    },
+    {
+      x: 2016,
+      y: 2536576
+    },
+    {
+      x: 2017,
+      y: 3438866
+    },
+    {
+      x: 2018,
+      y: 5445387
+    },
+    {
+      x: 2019,
+      y: this.currentAmount
+    }];
+
     this.lineChartData.push({
       data: points,
-      label: 'Cantor distribution',
-      pointRadius: 1
-    }); */
+      radius: 10,
+      pointHoverRadius: 10
+    });
   }
 
 }
