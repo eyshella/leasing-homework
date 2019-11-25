@@ -8,6 +8,8 @@ import * as BidActions from './store/bid/bid.actions';
 import * as AgreementActions from './store/agreement/agreement.actions';
 import { AgreementBuilder } from './helpers/agreement-builder/agreement.builder';
 import * as moment from 'moment';
+import { Router, ActivatedRoute, RouterState, NavigationEnd } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 
 
 @Component({
@@ -16,18 +18,29 @@ import * as moment from 'moment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store<AppState>) {
+  public isMenuButtonHided: boolean = false;
+
+  constructor(private store: Store<AppState>, private router: Router) {
     moment.locale('ru');
-   }
+  }
 
   public ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        if (!event.url.startsWith('/private') || event.url.startsWith('/private/menu')) {
+          this.isMenuButtonHided = true
+        } else {
+          this.isMenuButtonHided = false;
+        }
+      }
+    })
     this.store.dispatch(AuthActions.loadAuth());
 
     // Test data
     this.store.dispatch(ClientActions.addClients({
       clients: [
-        { id: 1, name: `ООО "СК Фундамент"` },
-        { id: 2, name: `ООО "Петербургская область"` },
+        { id: 1, name: `ООО "СК Арматура"` },
+        { id: 2, name: `ООО "Ленинградская область"` },
         { id: 3, name: `ООО "Фокс Девелопмент"` },
         { id: 4, name: `ОАО "Ланит-Терком"` }
       ]
@@ -79,5 +92,9 @@ export class AppComponent implements OnInit {
         { id: 2, bidId: null, clientId: 1, content: agreement2 },
       ]
     }));
+  }
+
+  private openMenu() {
+    this.router.navigateByUrl('private/menu')
   }
 }

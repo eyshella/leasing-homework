@@ -14,7 +14,6 @@ export class PrivateZoneGuard implements CanActivate {
     });
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    console.log(state.url, this.authInfo)
     if (this.authInfo == null ||
       this.authInfo.expirationDate == null ||
       !moment(this.authInfo.expirationDate).isValid ||

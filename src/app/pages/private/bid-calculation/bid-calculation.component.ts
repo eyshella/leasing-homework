@@ -148,8 +148,8 @@ export class BidCalculationComponent implements OnInit {
       (this.calculation.VAT / this.calculation.termInMonths / 100).toFixed(2),
       (this.calculation.totalLeasePayment / 100).toFixed(2),
       (this.calculation.VAT / 100).toFixed(2),
-      ((this.calculation.totalCost - this.calculation.depreciation) / 100).toFixed(2),
-      ((this.calculation.totalCost - this.calculation.depreciation) * 0.2 / 100).toFixed(2)
+      (Math.max((this.calculation.totalCost - this.calculation.depreciation), 0) / 100).toFixed(2),
+      (Math.max((this.calculation.totalCost - this.calculation.depreciation), 0) * 0.2 / 100).toFixed(2)
     );
 
     this.store.dispatch(AgreementActions.addAgreement({
