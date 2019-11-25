@@ -1,6 +1,13 @@
 <div class="cantor_wrapper">
-    <mat-card class="cantor_plot">
-      <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
-        [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins"></canvas>
-    </mat-card>
-  </div>
+  <mat-card class="cantor_plot">
+    <canvas baseChart [datasets]="lineChartData1" [labels]="lineChartLabels" [options]="lineChartOptions1"
+      [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+      [plugins]="lineChartPlugins"></canvas>
+  </mat-card>
+
+  <mat-card class="cantor_plot">
+    <canvas baseChart [datasets]="lineChartData2" [labels]="lineChartLabels" [options]="lineChartOptions2"
+      [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+      [plugins]="lineChartPlugins"></canvas>
+  </mat-card>
+</div>

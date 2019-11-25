@@ -13,11 +13,15 @@ import { Bid } from 'src/app/models/bid';
   styleUrls: ['./graphics.component.scss']
 })
 export class GraphicsComponent implements OnInit {
-
+  //TODO: Refactor this page a bit
+  
   public currentAmount: number = 0;
-  public lineChartData: ChartDataSets[] = [];
+  public currentNumberBids: number = 0;
+
+  public lineChartData1: ChartDataSets[] = [];
+  public lineChartData2: ChartDataSets[] = [];
   public lineChartLabels: Label[] = [];
-  public lineChartOptions: ChartOptions = {
+  public lineChartOptions1: ChartOptions = {
     scales: {
       xAxes: [{
         type: 'linear',
@@ -41,6 +45,30 @@ export class GraphicsComponent implements OnInit {
       fontSize: 16
     }
   }
+  public lineChartOptions2: ChartOptions = {
+    scales: {
+      xAxes: [{
+        type: 'linear',
+        ticks: {
+          min: 2015,
+          max: 2019,
+          stepSize: 1,
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 20,
+          stepSize: 5,
+        }
+      }]
+    },
+    title: {
+      text: 'Количество заявок',
+      display: true,
+      fontSize: 16
+    }
+  }
   public lineChartColors: Color[] = [
     {
       borderColor: 'rgb(66,12,232)',
@@ -60,14 +88,16 @@ export class GraphicsComponent implements OnInit {
         select(fromBids.selectAll)
       )
       .subscribe(data => {
-        data.forEach(item=>{
-          console.log(item.totalCost/100)
-          this.currentAmount+=(item.totalCost/100);
+        data.forEach(item => {
+          console.log(item.totalCost / 100)
+          this.currentAmount += (item.totalCost / 100);
         })
+
+        this.currentNumberBids += data.length;
       });
 
 
-    let points: ChartPoint[] = [{
+    let points1: ChartPoint[] = [{
       x: 2015,
       y: 1983043
     },
@@ -88,8 +118,35 @@ export class GraphicsComponent implements OnInit {
       y: this.currentAmount
     }];
 
-    this.lineChartData.push({
-      data: points,
+    let points2: ChartPoint[] = [{
+      x: 2015,
+      y: 8
+    },
+    {
+      x: 2016,
+      y: 4
+    },
+    {
+      x: 2017,
+      y: 5
+    },
+    {
+      x: 2018,
+      y: 5
+    },
+    {
+      x: 2019,
+      y: this.currentNumberBids
+    }];
+
+    this.lineChartData2.push({
+      data: points2,
+      radius: 10,
+      pointHoverRadius: 10
+    });
+
+    this.lineChartData1.push({
+      data: points1,
       radius: 10,
       pointHoverRadius: 10
     });
