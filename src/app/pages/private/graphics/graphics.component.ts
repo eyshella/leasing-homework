@@ -29,7 +29,7 @@ export class GraphicsComponent implements OnInit {
       }],
       yAxes: [{
         ticks: {
-          min: -0.1,
+          min: 0,
           max: 15000000,
           stepSize: 3000000,
         }
