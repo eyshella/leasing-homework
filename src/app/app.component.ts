@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
       ]
     }));
 
-      const agreement1 = AgreementBuilder.buildAgreement(
+   /*    const agreement1 = AgreementBuilder.buildAgreement(
         `ООО "СК Фундамент"`,
         'Петрова Сергея Васильевича',
         moment().format('L'),
@@ -108,7 +108,7 @@ export class AppComponent implements OnInit {
           { id: 1, bidId: 7, clientId: 4, content: agreement1, date: moment().format("L") },
           { id: 2, bidId: 7, clientId: 4, content: agreement2, date: moment().format("L") },
         ]
-      }));
+      })); */
   }
 
   private openMenu() {
