@@ -47,68 +47,68 @@ export class AppComponent implements OnInit {
 
     this.store.dispatch(BidActions.addBids({
       bids: [
-        { id: 1, termInMonths: 48, clientId: 1, firstPaymentCost: 70000000, totalCost: 700000000, product: 'BMW X7', date: moment().format("L") },
-        { id: 2, termInMonths: 24, clientId: 2, firstPaymentCost: 7000000, totalCost: 50000000, product: 'Lada Largus', date: moment().format("L") },
-        { id: 3, termInMonths: 6, clientId: 2, firstPaymentCost: 1000000, totalCost: 6000000, product: 'Сварочный инвертер', date: moment().format("L") },
-        { id: 4, termInMonths: 6, clientId: 2, firstPaymentCost: 1000000, totalCost: 3000000, product: 'Пила торцовочная Metabo', date: moment().format("L") },
-        { id: 5, termInMonths: 12, clientId: 3, firstPaymentCost: 1000000, totalCost: 25510000, product: 'Сервер Asus RS100-E9-PI2', date: moment().format("L") },
-        { id: 6, termInMonths: 12, clientId: 3, firstPaymentCost: 200000, totalCost: 7462000, product: 'Сервер SuperMicro SYS-5018R-WR', date: moment().format("L") },
+        { id: 1, termInMonths: 48, clientId: 1, firstPaymentCost: 70000000, totalCost: 700000000, product: 'BMW X7', date: moment('10.10.19').format("L") },
+        { id: 2, termInMonths: 24, clientId: 2, firstPaymentCost: 7000000, totalCost: 50000000, product: 'Lada Largus', date: moment('11.18.19').format("L") },
+        { id: 3, termInMonths: 6, clientId: 2, firstPaymentCost: 1000000, totalCost: 6000000, product: 'Сварочный инвертер', date: moment('11.13.19').format("L") },
+        { id: 4, termInMonths: 6, clientId: 2, firstPaymentCost: 1000000, totalCost: 3000000, product: 'Пила торцовочная Metabo', date: moment('12.1.19').format("L") },
+        { id: 5, termInMonths: 12, clientId: 3, firstPaymentCost: 1000000, totalCost: 25510000, product: 'Сервер Asus RS100-E9-PI2', date: moment('11.28.19').format("L") },
+        { id: 6, termInMonths: 12, clientId: 3, firstPaymentCost: 200000, totalCost: 7462000, product: 'Сервер SuperMicro SYS-5018R-WR', date: moment('11.29.19').format("L") },
         { id: 7, termInMonths: 4, clientId: 4, firstPaymentCost: 1000000, totalCost: 328700000, product: 'Mitsubishi Pajero Sport', date: moment().format("L") },
       ]
     }));
-/* 
-    const agreement1 = AgreementBuilder.buildAgreement(
-      `ООО "СК Фундамент"`,
-      'Петрова Сергея Васильевича',
-      moment().format('L'),
-      moment().add(1, 'months').format('L'),
-      '48',
-      '450000',
-      '90000',
-      '21600000',
-      '4410000',
-      '10000000',
-      '2000000',
-      '1037811047955',
-      '7805138942',
-      '784201001',
-      '52127939',
-      '52127939',
-      '40817810099910004312',
-      'АО «Альфа-Банк»',
-      'УЛИЦА МИРГОРОДСКАЯ, 1B',
-      '30101810200000000593'
-    );
 
-    const agreement2 = AgreementBuilder.buildAgreement(
-      `ООО "СК Фундамент"`,
-      'Петрова Сергея Васильевича',
-      moment().format('L'),
-      moment().add(1, 'months').format('L'),
-      '48',
-      '450000',
-      '90000',
-      '21600000',
-      '4410000',
-      '10000000',
-      '2000000',
-      '1037811047955',
-      '7805138942',
-      '784201001',
-      '52127939',
-      '52127939',
-      '40817810099910004312',
-      'АО «Альфа-Банк»',
-      'УЛИЦА МИРГОРОДСКАЯ, 1B',
-      '30101810200000000593'
-    );
+      const agreement1 = AgreementBuilder.buildAgreement(
+        `ООО "СК Фундамент"`,
+        'Петрова Сергея Васильевича',
+        moment().format('L'),
+        moment().add(1, 'months').format('L'),
+        '48',
+        '450000',
+        '90000',
+        '21600000',
+        '4410000',
+        '10000000',
+        '2000000',
+        '1037811047955',
+        '7805138942',
+        '784201001',
+        '52127939',
+        '52127939',
+        '40817810099910004312',
+        'АО «Альфа-Банк»',
+        'УЛИЦА МИРГОРОДСКАЯ, 1B',
+        '30101810200000000593'
+      );
 
-    this.store.dispatch(AgreementActions.addAgreements({
-      agreements: [
-        { id: 1, bidId: 7, clientId: 4, content: agreement1, date: moment().format("L") },
-        { id: 2, bidId: 7, clientId: 4, content: agreement2, date: moment().format("L") },
-      ]
-    })); */
+      const agreement2 = AgreementBuilder.buildAgreement(
+        `ООО "СК Фундамент"`,
+        'Петрова Сергея Васильевича',
+        moment().format('L'),
+        moment().add(1, 'months').format('L'),
+        '48',
+        '450000',
+        '90000',
+        '21600000',
+        '4410000',
+        '10000000',
+        '2000000',
+        '1037811047955',
+        '7805138942',
+        '784201001',
+        '52127939',
+        '52127939',
+        '40817810099910004312',
+        'АО «Альфа-Банк»',
+        'УЛИЦА МИРГОРОДСКАЯ, 1B',
+        '30101810200000000593'
+      );
+
+      this.store.dispatch(AgreementActions.addAgreements({
+        agreements: [
+          { id: 1, bidId: 7, clientId: 4, content: agreement1, date: moment().format("L") },
+          { id: 2, bidId: 7, clientId: 4, content: agreement2, date: moment().format("L") },
+        ]
+      }));
   }
 
   private openMenu() {

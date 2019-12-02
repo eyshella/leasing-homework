@@ -1,11 +1,32 @@
 <mat-tab-group mat-stretch-tabs>
-  <mat-tab label="Договора">
-    <app-agreements-list></app-agreements-list>
+  <mat-tab label="Договора" #agreementsTab>
+    <div *mat-tab-label class='sort-label'>
+      Договора
+      <img *ngIf='agreementsSortAsc && agreementsTab.isActive' (click)='agreementsSortAsc=!agreementsSortAsc'
+        src="./assets/keyboard_arrow_up-24px.svg">
+      <img *ngIf='!agreementsSortAsc && agreementsTab.isActive' (click)='agreementsSortAsc=!agreementsSortAsc'
+        src="./assets/keyboard_arrow_down-24px.svg">
+    </div>
+    <app-agreements-list [sort]='agreementsSortAsc'></app-agreements-list>
   </mat-tab>
-  <mat-tab label="Заявки">
-    <app-bids-list></app-bids-list>
+  <mat-tab label="Заявки" #bidsTab>
+    <div *mat-tab-label class='sort-label'>
+      Заявки
+      <img *ngIf='bidsSortAsc && bidsTab.isActive' (click)='bidsSortAsc=!bidsSortAsc'
+        src="./assets/keyboard_arrow_up-24px.svg">
+      <img *ngIf='!bidsSortAsc && bidsTab.isActive' (click)='bidsSortAsc=!bidsSortAsc'
+        src="./assets/keyboard_arrow_down-24px.svg">
+    </div>
+    <app-bids-list [sort]='bidsSortAsc'></app-bids-list>
   </mat-tab>
-  <mat-tab label="Клиенты">
-    <app-clients-list></app-clients-list>
+  <mat-tab label="Клиенты" #clientsTab>
+    <div *mat-tab-label class='sort-label'>
+      Клиенты
+      <img *ngIf='clientsSortAsc && clientsTab.isActive' (click)='clientsSortAsc=!clientsSortAsc'
+        src="./assets/keyboard_arrow_up-24px.svg">
+      <img *ngIf='!clientsSortAsc && clientsTab.isActive' (click)='clientsSortAsc=!clientsSortAsc'
+        src="./assets/keyboard_arrow_down-24px.svg">
+    </div>
+    <app-clients-list [sort]='clientsSortAsc'></app-clients-list>
   </mat-tab>
 </mat-tab-group>

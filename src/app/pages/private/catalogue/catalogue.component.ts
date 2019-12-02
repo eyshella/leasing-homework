@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent implements OnInit {
+  agreementsSortAsc: boolean = false;
+  bidsSortAsc: boolean = false;
+  clientsSortAsc: boolean = false;
 
   constructor() { }
 

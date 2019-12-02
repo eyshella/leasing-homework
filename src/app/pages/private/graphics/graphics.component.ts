@@ -93,6 +93,7 @@ export class GraphicsComponent implements OnInit {
         this.currentAmount = 0;
         this.currentNumberAgreements = 0;
         agreements.forEach(agreement => {
+          //TODO: We should avoid nested subscriptions and improve this somehow.
           this.store
             .pipe(
               select(selectBidState),

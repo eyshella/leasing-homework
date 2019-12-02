@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Agreement } from 'src/app/models/agreement';
 import * as fromClients from '../../../store/client/client.reducer';
 import * as fromAgreement from '../../../store/agreement/agreement.reducer';
@@ -20,6 +20,14 @@ export class AgreementsListComponent implements OnInit {
   public agreements: Agreement[] = [];
   public clients: Dictionary<Client>;
 
+  @Input()
+  public set sort(v: boolean) {
+    this._sort = v;
+    this.processSort();
+  }
+
+  private _sort: boolean = false
+
   constructor(private store: Store<AppState>, private router: Router) { }
 
   ngOnInit() {
@@ -31,6 +39,7 @@ export class AgreementsListComponent implements OnInit {
       )
       .subscribe(data => {
         this.agreements = data;
+        this.processSort();
       });
 
     this.store
@@ -40,10 +49,34 @@ export class AgreementsListComponent implements OnInit {
       )
       .subscribe(data => {
         this.clients = data;
+        this.processSort();
       });
   }
 
   public saveAgreementOnClick(agreement: Agreement) {
     saveAs(new Blob([agreement.content]), `Договор-${this.clients[agreement.clientId].name}-${agreement.id}.doc`)
+  }
+
+  private processSort() {
+    if (this.clients == null || Object.keys(this.clients).length === 0) {
+      return;
+    }
+
+    if (this.agreements.length === 0) {
+      return
+    }
+
+    this.agreements = this.agreements.sort((a, b) => {
+      if (this.clients[a.id].name < this.clients[b.id].name) {
+        return this._sort ? 1 : -1;
+      }
+      if (this.clients[a.id].name === this.clients[b.id].name) {
+        return 0;
+      }
+      if (this.clients[a.id].name > this.clients[b.id].name) {
+        return this._sort ? -1 : 1;
+      }
+      return 0;
+    })
   }
 }
