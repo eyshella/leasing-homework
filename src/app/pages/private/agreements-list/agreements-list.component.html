@@ -2,10 +2,13 @@
   <div class="agreements-list">
     <mat-card class="agreements-list__item agreement-card" *ngFor="let agreement of agreements">
       <div class="mat-body agreement-card__text">
-        N{{agreement.id}}
+        {{agreement.id}}
       </div>
       <div class="mat-body agreement-card__text">
         {{clients[agreement.clientId].name}}
+      </div>
+      <div class="mat-body agreement-card__text">
+        {{agreement.date}}
       </div>
       <button mat-button color="primary" class="agreement-card__text"
         (click)="saveAgreementOnClick(agreement)">Скачать</button>

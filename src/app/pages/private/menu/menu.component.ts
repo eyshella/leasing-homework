@@ -22,4 +22,11 @@ export class MenuComponent implements OnInit {
     this.router.navigateByUrl('/public/signin')
   }
 
+  public onClickAppInfo(){
+    alert(`
+      Система управления для лизинговой компании
+      Автор: Рагозина Мария Максимовна
+      Организация: СПБГЭУ
+    `)
+  }
 }

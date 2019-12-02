@@ -1,11 +1,11 @@
 <div class="menu-wrapper">
   <div class="menu">
     <div class="menu__row">
-      <button mat-stroked-button color="accent" class="menu__item" routerLink='/private/bids'>Заявки</button>
+      <button mat-stroked-button color="accent" class="menu__item" routerLink='/private/catalogue'>Документы</button>
       <button mat-stroked-button color="accent" class="menu__item" routerLink='/private/graphics'>Графики</button>
     </div>
     <div class="menu__row">
-      <button mat-stroked-button color="accent" class="menu__item" routerLink='/private/agreements'>Договора</button>
+      <button mat-stroked-button color="accent" class="menu__item" (click)='onClickAppInfo()'>О приложении</button>
       <button mat-stroked-button color="accent" class="menu__item" (click)='onClickSignOut()'>Выйти</button>
     </div>
   </div>

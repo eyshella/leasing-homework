@@ -140,7 +140,7 @@ export class BidCalculationComponent implements OnInit {
   private createAgreement() {
     const agreementText = AgreementBuilder.buildAgreement(
       this.client.name,
-      'Петрова Сергея Васильевича',
+      this.client.nameOfRepresentative,
       moment().format('L'),
       moment().add(1, 'months').format('L'),
       this.calculation.termInMonths.toString(),
@@ -149,7 +149,16 @@ export class BidCalculationComponent implements OnInit {
       (this.calculation.totalLeasePayment / 100).toFixed(2),
       (this.calculation.VAT / 100).toFixed(2),
       (Math.max((this.calculation.totalCost - this.calculation.depreciation), 0) / 100).toFixed(2),
-      (Math.max((this.calculation.totalCost - this.calculation.depreciation), 0) * 0.2 / 100).toFixed(2)
+      (Math.max((this.calculation.totalCost - this.calculation.depreciation), 0) * 0.2 / 100).toFixed(2),
+      this.client.ogrn,
+      this.client.inn,
+      this.client.kpp,
+      this.client.bik,
+      this.client.okpo,
+      this.client.paymentAccount,
+      this.client.bank,
+      this.client.address,
+      this.client.correspondentAccount
     );
 
     this.store.dispatch(AgreementActions.addAgreement({
@@ -157,10 +166,11 @@ export class BidCalculationComponent implements OnInit {
         content: agreementText,
         bidId: this.bid.id,
         clientId: this.bid.clientId,
-        id: this.nextAgreementId
+        id: this.nextAgreementId,
+        date: moment().format('L')
       }
     }));
 
-    this.router.navigateByUrl('private/agreements')
+    this.router.navigateByUrl('private/catalogue')
   }
 }

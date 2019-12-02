@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+
+.clients-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .clients-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+
+    .clients-list__title {}
+
+    .clients-list__item {
+      margin: 10px;
+    }
+  }
+}
+
+.client-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  .client-card__text{
+    padding-right:10px;
+  }
+}

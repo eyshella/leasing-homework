@@ -21,6 +21,10 @@ import { GraphicsComponent } from './pages/private/graphics/graphics.component';
 import { MenuComponent } from './pages/private/menu/menu.component';
 import { SigninComponent } from './pages/public/signin/signin.component';
 import { appReducers } from './store/app.reducer';
+import { CatalogueComponent } from './pages/private/catalogue/catalogue.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ClientsListComponent } from './pages/private/clients-list/clients-list.component';
+import { ClientItemComponent } from './pages/private/client-item/client-item.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { appReducers } from './store/app.reducer';
     MenuComponent,
     AgreementsListComponent,
     AgreementsItemComponent,
-    GraphicsComponent
+    GraphicsComponent,
+    CatalogueComponent,
+    ClientsListComponent,
+    ClientItemComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ import { appReducers } from './store/app.reducer';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

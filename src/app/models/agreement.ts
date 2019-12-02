@@ -3,4 +3,5 @@ export interface Agreement {
   content: string;
   clientId: number;
   bidId?: number;
+  date: string;
 }

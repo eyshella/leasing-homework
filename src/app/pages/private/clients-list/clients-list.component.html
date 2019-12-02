@@ -1,0 +1,13 @@
+<div class="clients-list-wrapper">
+  <div class="clients-list">
+    <mat-card class="clients-list__item client-card" *ngFor="let client of clients">
+      <div class="mat-body client-card__text">
+        {{client.id}}
+      </div>
+      <div class="mat-body client-card__text">
+        {{client.name}}
+      </div>
+      <button mat-button color="primary" class="bid-card__text" (click)="openClientOnClick(client.id)">Перейти</button>
+    </mat-card>
+  </div>
+</div>

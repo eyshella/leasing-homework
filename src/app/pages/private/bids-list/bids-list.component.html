@@ -2,10 +2,13 @@
   <div class="bids-list">
     <mat-card class="bids-list__item bid-card" *ngFor="let bid of bids">
       <div class="mat-body bid-card__text">
+        {{bid.id}}
+      </div>
+      <div class="mat-body bid-card__text">
         {{clients[bid.clientId].name}}
       </div>
       <div class="mat-body bid-card__text">
-        {{bid.totalCost/100|number:'1.2-2'}} &#8381;
+        {{bid.date}}
       </div>
       <button mat-button color="primary" class="bid-card__text" (click)="openBidOnClick(bid.id)">Перейти</button>
     </mat-card>

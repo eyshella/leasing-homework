@@ -5,4 +5,5 @@ export interface Bid {
   totalCost: number;
   firstPaymentCost: number;
   termInMonths: number;
+  date: string;
 }

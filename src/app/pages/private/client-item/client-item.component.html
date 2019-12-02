@@ -1,0 +1,83 @@
+<div class="client-wrapper">
+
+  <mat-card class="client">
+    <mat-card-header>
+      <mat-card-title>{{client.name}}</mat-card-title>
+      <mat-card-subtitle>{{client.nameOfRepresentative}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="client-content">
+      <div class="client-content__row key-value-row">
+        <div class="key-value-row__key">
+          Адрес:
+        </div>
+        <div class="key-value-row__value">
+          {{client.address}}
+        </div>
+      </div>
+      <div class="client-content__row key-value-row">
+        <div class="key-value-row__key">
+          ОГРН:
+        </div>
+        <div class="key-value-row__value">
+          {{client.ogrn}}
+        </div>
+      </div>
+      <div class="client-content__row key-value-row">
+        <div class="key-value-row__key">
+          ИНН:
+        </div>
+        <div class="key-value-row__value">
+          {{client.inn}}
+        </div>
+      </div>
+      <div class="client-content__row key-value-row">
+        <div class="key-value-row__key">
+          КПП:
+        </div>
+        <div class="key-value-row__value">
+          {{client.kpp}}
+        </div>
+      </div>
+      <div class="client-content__row key-value-row">
+        <div class="key-value-row__key">
+          БИК:
+        </div>
+        <div class="key-value-row__value">
+          {{client.bik}}
+        </div>
+      </div>
+      <div class="client-content__row key-value-row">
+        <div class="key-value-row__key">
+          ОКПО:
+        </div>
+        <div class="key-value-row__value">
+          {{client.okpo}}
+        </div>
+      </div>
+      <div class="client-content__row key-value-row">
+        <div class="key-value-row__key">
+          Номер счета:
+        </div>
+        <div class="key-value-row__value">
+          {{client.paymentAccount}}
+        </div>
+      </div>
+      <div class="client-content__row key-value-row">
+        <div class="key-value-row__key">
+          Банк:
+        </div>
+        <div class="key-value-row__value">
+          {{client.bank}}
+        </div>
+      </div>
+      <div class="client-content__row key-value-row">
+        <div class="key-value-row__key">
+          Корреспондентский счет:
+        </div>
+        <div class="key-value-row__value">
+          {{client.correspondentAccount}}
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

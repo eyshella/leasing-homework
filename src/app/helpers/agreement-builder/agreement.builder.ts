@@ -13,7 +13,16 @@ export class AgreementBuilder {
     totalLeasePayment: string,
     totalVat: string,
     redemptionPrice: string,
-    redemptionPriceVat: string
+    redemptionPriceVat: string,
+    ogrn: string,
+    inn: string,
+    kpp: string,
+    bik: string,
+    okpo: string,
+    paymentAccount: string,
+    bank: string,
+    address: string,
+    correspondentAccount: string
   ): string {
 
     const html = Handlebars.compile(template)({
@@ -27,9 +36,18 @@ export class AgreementBuilder {
       totalLeasePayment: totalLeasePayment,
       totalVat: totalVat,
       redemptionPrice: redemptionPrice,
-      redemptionPriceVat: redemptionPriceVat
+      redemptionPriceVat: redemptionPriceVat,
+      ogrn: ogrn,
+      inn: inn,
+      kpp: kpp,
+      bik: bik,
+      okpo: okpo,
+      paymentAccount: paymentAccount,
+      bank: bank,
+      address: address,
+      correspondentAccount: correspondentAccount
     });
 
-    return "\uFEFF"+html;
+    return "\uFEFF" + html;
   }
 }

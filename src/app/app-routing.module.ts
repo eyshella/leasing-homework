@@ -11,13 +11,17 @@ import { BidsListComponent } from './pages/private/bids-list/bids-list.component
 import { GraphicsComponent } from './pages/private/graphics/graphics.component';
 import { MenuComponent } from './pages/private/menu/menu.component';
 import { SigninComponent } from './pages/public/signin/signin.component';
+import { CatalogueComponent } from './pages/private/catalogue/catalogue.component';
+import { ClientItemComponent } from './pages/private/client-item/client-item.component';
 
 const routes: Routes = [
   { path: 'public/signin', component: SigninComponent, canActivate: [SignInGuard] },
   { path: 'private/menu', component: MenuComponent, canActivate: [PrivateZoneGuard] },
   { path: 'private/bids/:id', component: BidItemComponent, canActivate: [PrivateZoneGuard] },
-  { path: 'private/bids', component: BidsListComponent, canActivate: [PrivateZoneGuard] },
-  { path: 'private/agreements', component: AgreementsListComponent, canActivate: [PrivateZoneGuard] },
+  { path: 'private/client/:id', component: ClientItemComponent, canActivate: [PrivateZoneGuard] },
+  //{ path: 'private/bids', component: BidsListComponent, canActivate: [PrivateZoneGuard] },
+  //{ path: 'private/agreements', component: AgreementsListComponent, canActivate: [PrivateZoneGuard] },
+  { path: 'private/catalogue', component: CatalogueComponent, canActivate: [PrivateZoneGuard] },
   //{ path: 'private/agreements/:id', component: AgreementsItemComponent, canActivate: [PrivateZoneGuard] },
   { path: 'private/graphics', component: GraphicsComponent, canActivate: [PrivateZoneGuard] },
   { path: 'private/bids/:id/calculation', component: BidCalculationComponent, canActivate: [PrivateZoneGuard] },
