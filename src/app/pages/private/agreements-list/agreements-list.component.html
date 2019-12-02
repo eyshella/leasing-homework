@@ -1,5 +1,6 @@
 <div class="agreements-list-wrapper">
   <div class="agreements-list">
+    <h3 *ngIf='agreements.length===0'>Договора не найдены</h3>
     <mat-card class="agreements-list__item agreement-card" *ngFor="let agreement of agreements">
       <div class="mat-body agreement-card__text">
         {{agreement.id}}

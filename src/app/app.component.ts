@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
         { id: 7, termInMonths: 4, clientId: 4, firstPaymentCost: 1000000, totalCost: 328700000, product: 'Mitsubishi Pajero Sport', date: moment().format("L") },
       ]
     }));
-
+/* 
     const agreement1 = AgreementBuilder.buildAgreement(
       `ООО "СК Фундамент"`,
       'Петрова Сергея Васильевича',
@@ -105,10 +105,10 @@ export class AppComponent implements OnInit {
 
     this.store.dispatch(AgreementActions.addAgreements({
       agreements: [
-        { id: 1, bidId: null, clientId: 1, content: agreement1, date: moment().format("L") },
-        { id: 2, bidId: null, clientId: 1, content: agreement2, date: moment().format("L") },
+        { id: 1, bidId: 7, clientId: 4, content: agreement1, date: moment().format("L") },
+        { id: 2, bidId: 7, clientId: 4, content: agreement2, date: moment().format("L") },
       ]
-    }));
+    })); */
   }
 
   private openMenu() {

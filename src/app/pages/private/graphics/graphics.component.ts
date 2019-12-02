@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartPoint } from 'chart.js';
 import { Color, Label, BaseChartDirective } from 'ng2-charts';
-import { AppState, selectBidState } from 'src/app/store/app.reducer';
+import { AppState, selectBidState, selectAgreementState } from 'src/app/store/app.reducer';
 import { Store, select } from '@ngrx/store';
+import * as fromAgreements from '../../../store/agreement/agreement.reducer';
 import * as fromBids from '../../../store/bid/bid.reducer';
 import { Bid } from 'src/app/models/bid';
+import { tap } from 'rxjs/operators';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class GraphicsComponent implements OnInit {
   //TODO: Refactor this page a bit
 
   public currentAmount: number = 0;
-  public currentNumberBids: number = 0;
+  public currentNumberAgreements: number = 0;
 
   public lineChartData1: ChartDataSets[] = [];
   public lineChartData2: ChartDataSets[] = [];
@@ -40,7 +42,7 @@ export class GraphicsComponent implements OnInit {
       }]
     },
     title: {
-      text: 'Сумма общих стоимостей заявок (в рублях)',
+      text: 'Сумма общих стоимостей договоров (в рублях)',
       display: true,
       fontSize: 16
     }
@@ -64,7 +66,7 @@ export class GraphicsComponent implements OnInit {
       }]
     },
     title: {
-      text: 'Количество заявок',
+      text: 'Количество договоров',
       display: true,
       fontSize: 16
     }
@@ -84,15 +86,27 @@ export class GraphicsComponent implements OnInit {
   ngOnInit() {
     this.store
       .pipe(
-        select(selectBidState),
-        select(fromBids.selectAll)
+        select(selectAgreementState),
+        select(fromAgreements.selectAll),
       )
-      .subscribe(data => {
-        data.forEach(item => {
-          this.currentAmount += (item.totalCost / 100);
-        })
+      .subscribe(agreements => {
+        this.currentAmount = 0;
+        this.currentNumberAgreements = 0;
+        agreements.forEach(agreement => {
+          this.store
+            .pipe(
+              select(selectBidState),
+              select(fromBids.selectBid, { id: agreement.id }),
+            )
+            .subscribe((bid: Bid) => {
 
-        this.currentNumberBids += data.length;
+              this.currentAmount += (bid.totalCost / 100);
+              console.log(this.currentAmount)
+            });
+        });
+
+        this.currentNumberAgreements = agreements.length;
+
       });
 
 
@@ -135,7 +149,7 @@ export class GraphicsComponent implements OnInit {
     },
     {
       x: 2019,
-      y: this.currentNumberBids
+      y: this.currentNumberAgreements
     }];
 
     this.lineChartData2.push({
