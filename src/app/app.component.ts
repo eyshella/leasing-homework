@@ -57,58 +57,60 @@ export class AppComponent implements OnInit {
       ]
     }));
 
-   /*    const agreement1 = AgreementBuilder.buildAgreement(
-        `ООО "СК Фундамент"`,
-        'Петрова Сергея Васильевича',
-        moment().format('L'),
-        moment().add(1, 'months').format('L'),
-        '48',
-        '450000',
-        '90000',
-        '21600000',
-        '4410000',
-        '10000000',
-        '2000000',
-        '1037811047955',
-        '7805138942',
-        '784201001',
-        '52127939',
-        '52127939',
-        '40817810099910004312',
-        'АО «Альфа-Банк»',
-        'УЛИЦА МИРГОРОДСКАЯ, 1B',
-        '30101810200000000593'
-      );
-
-      const agreement2 = AgreementBuilder.buildAgreement(
-        `ООО "СК Фундамент"`,
-        'Петрова Сергея Васильевича',
-        moment().format('L'),
-        moment().add(1, 'months').format('L'),
-        '48',
-        '450000',
-        '90000',
-        '21600000',
-        '4410000',
-        '10000000',
-        '2000000',
-        '1037811047955',
-        '7805138942',
-        '784201001',
-        '52127939',
-        '52127939',
-        '40817810099910004312',
-        'АО «Альфа-Банк»',
-        'УЛИЦА МИРГОРОДСКАЯ, 1B',
-        '30101810200000000593'
-      );
-
-      this.store.dispatch(AgreementActions.addAgreements({
-        agreements: [
-          { id: 1, bidId: 7, clientId: 4, content: agreement1, date: moment().format("L") },
-          { id: 2, bidId: 7, clientId: 4, content: agreement2, date: moment().format("L") },
-        ]
-      })); */
+    /*    const agreement1 = AgreementBuilder.buildAgreement(
+         `ООО "СК Фундамент"`,
+         'Петрова Сергея Васильевича',
+         moment().format('L'),
+         moment().add(1, 'months').format('L'),
+         '48',
+         '450000',
+         '90000',
+         '21600000',
+         '4410000',
+         '10000000',
+         '2000000',
+         '1037811047955',
+         '7805138942',
+         '784201001',
+         '52127939',
+         '52127939',
+         '40817810099910004312',
+         'АО «Альфа-Банк»',
+         'УЛИЦА МИРГОРОДСКАЯ, 1B',
+         '30101810200000000593',
+          'Автомобиль BMW X7'
+       );
+ 
+       const agreement2 = AgreementBuilder.buildAgreement(
+         `ООО "СК Фундамент"`,
+         'Петрова Сергея Васильевича',
+         moment().format('L'),
+         moment().add(1, 'months').format('L'),
+         '48',
+         '450000',
+         '90000',
+         '21600000',
+         '4410000',
+         '10000000',
+         '2000000',
+         '1037811047955',
+         '7805138942',
+         '784201001',
+         '52127939',
+         '52127939',
+         '40817810099910004312',
+         'АО «Альфа-Банк»',
+         'УЛИЦА МИРГОРОДСКАЯ, 1B',
+         '30101810200000000593',
+         'Автомобиль BMW X7'
+       );
+ 
+       this.store.dispatch(AgreementActions.addAgreements({
+         agreements: [
+           { id: 1, bidId: 7, clientId: 4, content: agreement1, date: moment().format("L") },
+           { id: 2, bidId: 7, clientId: 4, content: agreement2, date: moment().format("L") },
+         ]
+       })); */
   }
 
   private openMenu() {

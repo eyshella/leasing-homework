@@ -22,7 +22,8 @@ export class AgreementBuilder {
     paymentAccount: string,
     bank: string,
     address: string,
-    correspondentAccount: string
+    correspondentAccount: string,
+    product: string
   ): string {
 
     const html = Handlebars.compile(template)({
@@ -45,7 +46,8 @@ export class AgreementBuilder {
       paymentAccount: paymentAccount,
       bank: bank,
       address: address,
-      correspondentAccount: correspondentAccount
+      correspondentAccount: correspondentAccount,
+      product: product
     });
 
     return "\uFEFF" + html;

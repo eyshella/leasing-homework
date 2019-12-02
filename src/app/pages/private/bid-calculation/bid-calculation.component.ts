@@ -158,7 +158,8 @@ export class BidCalculationComponent implements OnInit {
       this.client.paymentAccount,
       this.client.bank,
       this.client.address,
-      this.client.correspondentAccount
+      this.client.correspondentAccount,
+      this.bid.product
     );
 
     this.store.dispatch(AgreementActions.addAgreement({
