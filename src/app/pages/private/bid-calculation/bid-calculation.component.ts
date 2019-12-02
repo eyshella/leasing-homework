@@ -95,7 +95,7 @@ export class BidCalculationComponent implements OnInit {
 
   public rejectOnClick() {
     this.store.dispatch(bidActions.deleteBid({ id: this.id.toString() }));
-    this.router.navigateByUrl('private/bids')
+    this.router.navigateByUrl('private/catalogue')
   }
 
   private initCalculation() {
