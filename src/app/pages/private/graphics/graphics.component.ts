@@ -97,7 +97,7 @@ export class GraphicsComponent implements OnInit {
           this.store
             .pipe(
               select(selectBidState),
-              select(fromBids.selectBid, { id: agreement.id }),
+              select(fromBids.selectBid, { id: agreement.bidId }),
             )
             .subscribe((bid: Bid) => {
 
